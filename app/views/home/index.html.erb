@@ -1,0 +1,25 @@
+<div>
+
+  <h2>Ajouter un commentaire</h2>
+  <%= form_tag comments_path, method: :post do %>
+    <%= text_field_tag 'comment[title]', '', placeholder: 'Titre' %>
+    <%= text_area_tag 'comment[content]', '', placeholder: 'Saisissez votre commentaire' %>
+    <%= submit_tag 'Save' %>
+  <% end %>
+
+  <h2>Commentaires (<%= @comments.count %>)</h2>
+  <ul class="comments">
+    <% @comments.each do |comment| %>
+      <li class="comment">
+        <small>#<%= comment.id %> written <%= comment.created_at %> by <%= comment.user.email %></small>
+        <h3><%= comment.title %></h3>
+        <p><%= comment.content %></p>
+        <p class="actions">
+          <%= link_to 'Like', like_comments_path(comment) %> (<b><%= comment.likes %></b>) -
+          <%= link_to 'Dislike', dislike_comments_path(comment) %> (<b><%= comment.dislikes %></b>)
+        </p>
+      </li>
+    <% end %>
+  </ul>
+
+</div>
