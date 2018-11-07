@@ -1,5 +1,9 @@
 <div>
 
+  <p class="logout">
+    <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+  </p>
+
   <h2>Ajouter un commentaire</h2>
   <%= form_tag comments_path, method: :post do %>
     <%= text_field_tag 'comment[title]', '', placeholder: 'Titre' %>

@@ -59,3 +59,7 @@ form textarea {
 .actions {
     margin-bottom: 0;
 }
+
+.logout {
+    text-align: right;
+}
